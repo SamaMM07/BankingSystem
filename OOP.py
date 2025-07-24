@@ -18,9 +18,9 @@ class Bank:
 class Customer:
     def __init__(self):
         self.name = input("What is your name? ")
-        self.balance = self.get_initial_balance()
+        self.balance = self.balance()
 
-    def get_initial_balance(self):
+    def balance(self):
         while True:
             balance = float(input("Enter your current balance? "))
             if balance < 0:
@@ -67,6 +67,10 @@ class SystemOperation:
 
 
 def main():
+    bank = Bank()
+    bank.welcome_message()
+    customer = Customer()
+    ops = SystemOperation(customer, bank)
 
     def main_menu():
         choice = int(input(f"Welcome {customer.name}. Choose the number of the operation you would like to do: "
@@ -101,13 +105,8 @@ def main():
                 print("Invalid choice. Try again.")
                 break
 
-
-
-    bank = Bank()
-    bank.welcome_message()
-    customer = Customer()
-    ops = SystemOperation(customer,bank)
     main_menu()
 
-
+if __name__ == "__main__":
+    main()
 
